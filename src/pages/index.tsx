@@ -1,26 +1,22 @@
 import type {NextPage} from "next";
-import Link from "next/link";
-import useSWR, {Fetcher, Key} from "swr";
 
-const path: Key = "/api/currencies";
-const fetcher: Fetcher<Currency[], string> = (url) => fetch(url).then((res) => res.json());
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import CurrenciesTable from "@/components/CurrenciesTable";
+
+/* <h1>Hello World, let&rsquo;s decentralize the time-value of money!</h1> */
 
 const Home: NextPage = () => {
-  const {data: currencies, error} = useSWR(path, fetcher);
-
   return (
-    <main className="w-full min-h-screen overflow-hidden border border-red-500">
-      <h1>Hello World, let&rsquo;s decentralize the time-value of money!</h1>
+    <main className="w-full min-h-screen overflow-hidden">
+      <Header />
 
-      <ol className="w-full">
-        {currencies?.map((currency: Currency) => (
-          <li key={currency.id}>
-            <Link href={`/currencies/${currency.id}`}>
-              <a>{currency.name}</a>
-            </Link>
-          </li>
-        ))}
-      </ol>
+      <section className="grid auto-cols-fr lg:grid-cols-2 grid-rows-4 gap-1 px-2 overflow-hidden">
+        <CurrenciesTable />
+        <div className="row-start-2 row-end-3 col-start-auto col-end-auto border border-blue-500">2</div>
+        <div className="border border-green-800">3</div>
+      </section>
+      <Footer />
     </main>
   );
 };
