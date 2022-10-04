@@ -1,7 +1,7 @@
 import type {NextApiHandler, NextApiRequest, NextApiResponse} from "next";
 
 interface ExtendedNextApiResponse extends NextApiResponse {
-  json: (body: CurrencyByIdType) => void;
+  json: (body: CurrencyChartType) => void;
 }
 
 const handler: NextApiHandler = async (req: NextApiRequest, res: ExtendedNextApiResponse) => {
@@ -12,12 +12,14 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: ExtendedNextApi
     res.status(405).end(`Method ${method} Not Allowed`);
   }
 
-  const {id} = req.query;
+  const {id, days} = req.query;
 
   if (method === "GET") {
     try {
-      const data = await fetch(`${process.env.COINGECKO_API_URL}/coins/${id}?localization=false&developer_data=false`);
-      const currency: CurrencyByIdType = await data.json();
+      const data = await fetch(
+        `${process.env.COINGECKO_API_URL}/coins/${id}/market_chart?vs_currency=usd&days=${days}`,
+      );
+      const currency: CurrencyChartType = await data.json();
 
       res.status(200).json(currency);
     } catch (err) {

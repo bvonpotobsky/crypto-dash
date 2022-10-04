@@ -11,7 +11,7 @@ module.exports = {
         sans: ["Titillium Web", ...defautTheme.fontFamily.sans],
       },
       screens: {
-        sm: "480px",
+        xs: "480px",
         ...defautTheme.screens,
       },
     },

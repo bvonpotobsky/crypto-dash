@@ -25,3 +25,13 @@ export const formatPercent = (percent: number | undefined): string => {
 
   return `${percent.toFixed(2)}%`;
 };
+
+export const formatPriceChart = (price: number | undefined): string => {
+  if (!price) return "0";
+
+  return price.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
+};

@@ -1,23 +1,21 @@
 import type {NextPage} from "next";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import RootLayout from "Layout";
+
 import CurrenciesTable from "@/components/CurrenciesTable";
+import NewsContainer from "@/components/NewsContainer";
 
-/* <h1>Hello World, let&rsquo;s decentralize the time-value of money!</h1> */
-
-const Home: NextPage = () => {
+const Home: NextPage = (): JSX.Element => {
   return (
-    <main className="w-full min-h-screen overflow-hidden">
-      <Header />
-
-      <section className="grid auto-cols-fr lg:grid-cols-2 grid-rows-4 gap-1 px-2 overflow-hidden">
+    <RootLayout>
+      <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-y-1 px-2 md:px-4">
         <CurrenciesTable />
-        <div className="row-start-2 row-end-3 col-start-auto col-end-auto border border-blue-500">2</div>
-        <div className="border border-green-800">3</div>
+        <div className="w-full md:w-[99.5%] md:justify-self-end col-start-1 md:col-start-2 col-end-auto bg-slate-800/50 rounded overflow-hidden">
+          2
+        </div>
+        <NewsContainer />
       </section>
-      <Footer />
-    </main>
+    </RootLayout>
   );
 };
 

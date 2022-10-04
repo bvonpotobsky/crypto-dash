@@ -220,3 +220,9 @@ type TickersType = {
   coin_id: string;
   target_coin_id: string;
 };
+
+type CurrencyChartType = {
+  prices: Array<Array<number>>;
+  market_caps: Array<Array<number>>;
+  total_volumes: Array<Array<number>>;
+};

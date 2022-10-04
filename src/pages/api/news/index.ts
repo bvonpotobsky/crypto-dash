@@ -1,7 +1,7 @@
 import type {NextApiHandler, NextApiRequest, NextApiResponse} from "next";
 
 interface ExtendedNextApiResponse extends NextApiResponse {
-  json: (body: CurrencyByIdType) => void;
+  json: (data: News[]) => void;
 }
 
 const handler: NextApiHandler = async (req: NextApiRequest, res: ExtendedNextApiResponse) => {
@@ -12,14 +12,14 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: ExtendedNextApi
     res.status(405).end(`Method ${method} Not Allowed`);
   }
 
-  const {id} = req.query;
-
   if (method === "GET") {
     try {
-      const data = await fetch(`${process.env.COINGECKO_API_URL}/coins/${id}?localization=false&developer_data=false`);
-      const currency: CurrencyByIdType = await data.json();
+      const data = await fetch(
+        `${process.env.CRYPTO_NEWS_API_URL}/category?section=general&items=50&page=1&token=${process.env.CRYPTO_NEWS_API_KEY}`,
+      );
+      const news: News[] = await data.json();
 
-      res.status(200).json(currency);
+      res.status(200).json(news);
     } catch (err) {
       if (err instanceof Error) {
         res.status(500).json({statusCode: 500, message: err.message});
