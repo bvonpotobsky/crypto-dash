@@ -1,4 +1,4 @@
-export const marketCapToBillons = (marketCap: number | null): string => {
+export const marketCapToBillons = (marketCap: number | undefined): string => {
   if (!marketCap) return "N/A";
 
   const marketCapInBillions = marketCap / 1e9; // 1e9 is 1 billion
@@ -11,7 +11,7 @@ export const marketCapToBillons = (marketCap: number | null): string => {
   // There is probably a better way to do this. I would like to learn it at Exactly ;)
 };
 
-export const formatPrice = (price: number | null): string => {
+export const formatPrice = (price: number | undefined): string => {
   if (!price) return "N/A";
 
   return price.toLocaleString("en-US", {
@@ -20,7 +20,7 @@ export const formatPrice = (price: number | null): string => {
   });
 };
 
-export const formatPercent = (percent: number | null): string => {
+export const formatPercent = (percent: number | undefined): string => {
   if (!percent) return "N/A";
 
   return `${percent.toFixed(2)}%`;
