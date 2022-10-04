@@ -1,7 +1,14 @@
+import Text from "./Text";
+
 const Footer: React.FC = (): JSX.Element => {
   return (
-    <footer className="w-full p-2 md:p-2 self-end">
-      <p>Foooooter</p>
+    <footer className="w-full flex flex-col items-center  text-center py-4">
+      <Text className="group">
+        Made with <span className="group-hover:text-red-500">&#9829;</span> by{" "}
+        <a href="https://github.com/bvonpotobsky" className="underline">
+          @bvonpotobsky
+        </a>
+      </Text>
     </footer>
   );
 };

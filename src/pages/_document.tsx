@@ -9,7 +9,7 @@ const Document = () => {
           rel="stylesheet"
         />
       </Head>
-      <body className="text-black dark:text-white bg-white dark:bg-black font-sans">
+      <body className="w-full text-black dark:text-white bg-white dark:bg-black font-sans">
         <Main />
         <NextScript />
       </body>

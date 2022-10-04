@@ -79,7 +79,11 @@ const CurrencyBanner: React.FC<{currency: CurrencyByIdType}> = ({
       </button>
       {/* This shows and [succes|error] message when required */}
       {(clipboard.copied || clipboard.error) && (
-        <Text className={`absolute top-14 right-1 text-xs ${clipboard.copied ? "text-green-500" : "text-red-500"}`}>
+        <Text
+          className={`absolute top-14 xs:top-7 right-1 xs:right-9 text-xs ${
+            clipboard.copied ? "text-green-500" : "text-red-500"
+          }`}
+        >
           {clipboard.message}
         </Text>
       )}

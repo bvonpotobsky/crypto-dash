@@ -23,7 +23,7 @@ const CurrencyChart: React.FC<{id: CurrencyByIdType["id"]}> = ({id}: {id: Curren
 
   return (
     <section className="w-full col-start-1 col-end-3 md:col-end-2 lg:col-end-3 row-start-2 flex flex-col shadow-sm rounded">
-      <div className="flex items-center justify-between rounded-t bg-black/10 dark:bg-slate-800/50">
+      <div className="flex items-center justify-between rounded-t bg-black/10 dark:bg-slate-800/80">
         <Text className="p-2 lg:py-2.5">Chart</Text>
 
         <select

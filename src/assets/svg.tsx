@@ -149,3 +149,28 @@ export const Share = ({className, color = "currentColor", size = "24", strokeWid
     <path d="M15.41 6.51l-6.82 3.98" />
   </svg>
 );
+
+export const LogoutIcon = ({
+  className,
+  color = "currentColor",
+  size = "24",
+  strokeWidth = "1.5",
+}: svgProps): JSX.Element => (
+  <svg
+    className={className}
+    data-testid="geist-icon"
+    fill="none"
+    height={size}
+    width={size}
+    shapeRendering="geometricPrecision"
+    stroke={color}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={strokeWidth}
+    viewBox="0 0 24 24"
+  >
+    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+    <path d="M16 17l5-5-5-5" />
+    <path d="M21 12H9" />
+  </svg>
+);

@@ -1,5 +1,4 @@
 import Text from "@/components/shared/Text";
-import Link from "next/link";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -49,24 +48,31 @@ const NewsContainer: React.FC = (): JSX.Element => {
   ];
 
   return (
-    <section className="md:col-span-3 dark:bg-slate-800/50 rounded overflow-hidden">
-      <div className="flex items-center justify-between p-2 bg-black/10 dark:bg-slate-800/80">
-        <h3>Latest News</h3>
+    <section className="md:col-span-3 rounded overflow-hidden">
+      <div className="flex items-center justify-between p-2 lg:py-2.5 bg-black/10 dark:bg-slate-800/80">
+        <Text variant="h3">Latest News</Text>
       </div>
 
-      <ul className="p-2 flex flex-col">
+      <ul className="flex flex-col">
         {data?.map((item, index) => (
-          <li key={index} className="w-full grid grid-cols-6 auto-rows-auto">
-            <Link href={item.news_url}>
-              <a className="col-span-6 row-start-1 row-auto font-bold text-[14px] lg:text-lg">{item.title}</a>
-            </Link>
+          <li
+            key={index}
+            className="w-full grid grid-cols-6 auto-rows-auto p-1 py-2 border-b-2 border-black/10 dark:border-slate-800/80"
+          >
+            <a
+              href={item.news_url}
+              className="col-span-6 row-start-1 row-auto font-bold text-[14px] lg:text-lg hover:underline"
+            >
+              {item.title}
+            </a>
+
             <Text truncate lines="8" className="col-span-6 row-start-2 my-2 font-medium">
               {item.text}
             </Text>
             <Text className="row-start-3 col-span-3 row text-xs first-letter:uppercase">
               {dayjs(new Date(item.date)).fromNow()}
             </Text>
-            <Text className="row-start-3 col-span-3 place-self-end tex">{item.source_name}</Text>
+            <Text className="row-start-3 col-span-3 place-self-end font-light">{item.source_name}</Text>
           </li>
         ))}
       </ul>
