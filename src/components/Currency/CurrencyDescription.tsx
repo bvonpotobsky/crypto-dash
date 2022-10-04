@@ -18,7 +18,7 @@ const CurrencyDescription: React.FC<CurrencyDescriptionType> = ({
       <Text className="p-2 lg:py-2.5 text-center font-semibold bg-black/10 dark:bg-slate-800/80 rounded-t">
         What is {name}?
       </Text>
-      <Text className="my-2 font-medium">{text}</Text>
+      <Text className="my-2 font-medium px-1 text-justify">{text}</Text>
     </div>
   );
 };
