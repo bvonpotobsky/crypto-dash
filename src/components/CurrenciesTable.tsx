@@ -31,7 +31,7 @@ const CurrenciesTable: React.FC = (): JSX.Element => {
     <div className="w-full col-start-1 col-end-3  bg-white dark:bg-slate-800/50 rounded overflow-hidden">
       <table className="w-full p-2 table-auto">
         <caption className="p-2 lg:py-2.5 text-left bg-black/10 dark:bg-slate-800/80">
-          Top 5 crypto currencies by Market Cap
+          Top 10 crypto currencies by Market Cap
         </caption>
         <thead className="w-full border-y dark:border-y-black">
           <tr className="w-full [&>*]:p-2 lg:[&>*]:p-2.5 [&>*]:font-semibold dark:text-slate-400">
