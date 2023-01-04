@@ -15,7 +15,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: ExtendedNextApi
   if (method === "GET") {
     try {
       const data = await fetch(
-        `${process.env.CRYPTO_NEWS_API_URL}/category?section=general&items=50&page=1&token=${process.env.CRYPTO_NEWS_API_KEY}`,
+        `${process.env.CRYPTO_NEWS_API_URL}/category?section=general&items=3&page=1&token=${process.env.CRYPTO_NEWS_API_KEY}`,
       );
       const news: News[] = await data.json();
 

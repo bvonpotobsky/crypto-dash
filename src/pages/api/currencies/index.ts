@@ -15,7 +15,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: ExtendedNextApi
   if (method === "GET") {
     try {
       const data = await fetch(
-        `${process.env.COINGECKO_API_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5`,
+        `${process.env.COINGECKO_API_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10`,
       );
       const currencies: CurrencyByIdType = await data.json();
 
