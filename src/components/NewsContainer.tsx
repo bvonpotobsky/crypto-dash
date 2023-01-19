@@ -6,7 +6,6 @@ dayjs.extend(relativeTime);
 
 import useSWR, {Fetcher, Key} from "swr";
 import MessageHandler from "./shared/MessageHandler";
-// https://cryptonews-api.com/api/v1/category?section=general&items=3&page=1&token=jthw54yrt0syo64p2icsrnqz7qdkffzstpsrmrsr
 const path: Key = "/api/news";
 const fetcher: Fetcher<{data: News[]; total_pages: number}, string> = (url) => fetch(url).then((res) => res.json());
 
