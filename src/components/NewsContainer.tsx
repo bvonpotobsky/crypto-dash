@@ -6,14 +6,19 @@ dayjs.extend(relativeTime);
 
 import useSWR, {Fetcher, Key} from "swr";
 import MessageHandler from "./shared/MessageHandler";
+import {useState} from "react";
 const path: Key = "/api/news";
 const fetcher: Fetcher<{data: News[]; total_pages: number}, string> = (url) => fetch(url).then((res) => res.json());
 
 const NewsContainer: React.FC = (): JSX.Element => {
   const {data: news, error} = useSWR(path, fetcher);
 
+  const [pagination, setPagination] = useState<{page: number; limit: number}>({page: 1, limit: 5});
+
   if (error) return <MessageHandler message="An error has ocurred!" />;
   if (!news) return <MessageHandler message="Loading..." />;
+
+  const newsToRender = news.data.slice((pagination.page - 1) * pagination.limit, pagination.page * pagination.limit);
 
   return (
     <section className="relative md:col-span-3 rounded overflow-hidden">
@@ -22,7 +27,7 @@ const NewsContainer: React.FC = (): JSX.Element => {
       </div>
 
       <ul className="flex flex-col">
-        {news?.data?.map((item, index) => (
+        {newsToRender?.map((item, index) => (
           <li
             key={index}
             className="w-full grid grid-cols-6 auto-rows-auto p-1 py-2 border-b-2 border-black/10 dark:border-slate-800/80"
@@ -44,6 +49,24 @@ const NewsContainer: React.FC = (): JSX.Element => {
           </li>
         ))}
       </ul>
+
+      <div className="flex items-center justify-center gap-x-2 mt-2">
+        <button
+          className="py-1.5 px-2 bg-black/10 dark:bg-slate-800/80 disabled:opacity-50"
+          onClick={() => setPagination((prev) => ({...prev, page: prev.page - 1}))}
+          disabled={pagination.page === 1}
+        >
+          Prev
+        </button>
+
+        <button
+          className="py-1.5 px-2 bg-black/10 dark:bg-slate-800/80 disabled:opacity-50"
+          onClick={() => setPagination((prev) => ({...prev, page: prev.page + 1}))}
+          disabled={pagination.page * pagination.limit >= news.data.length}
+        >
+          Next
+        </button>
+      </div>
     </section>
   );
 };
