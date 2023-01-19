@@ -13,11 +13,10 @@ const client = createClient({
 
 const MyApp = ({Component, pageProps}: AppProps) => {
   return (
-    <WagmiConfig client={client}>
-      <ThemeProvider attribute="class">
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </WagmiConfig>
+    // <WagmiConfig client={client}></WagmiConfig>
+    <ThemeProvider attribute="class">
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 };
 

@@ -15,8 +15,6 @@ const NewsContainer: React.FC = (): JSX.Element => {
   if (error) return <MessageHandler message="An error has ocurred!" />;
   if (!news) return <MessageHandler message="Loading..." />;
 
-  console.log({news});
-
   return (
     <section className="relative md:col-span-3 rounded overflow-hidden">
       <div className="flex items-center justify-between p-2 lg:py-2.5 bg-black/10 dark:bg-slate-800/80">
