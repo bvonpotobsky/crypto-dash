@@ -3,17 +3,9 @@ import {useState} from "react";
 import {useTheme} from "next-themes";
 import {useMountEffect} from "hooks/useMountEffect";
 
-import {WordmarkLogoWhite, WordmarkLogoBlack, Moon, Sun, WalletIcon, LogoutIcon} from "@/assets/svg";
-
-import {useAccount, useConnect, useDisconnect} from "wagmi";
-import {InjectedConnector} from "wagmi/connectors/injected";
-import Text from "./Text";
+import {WordmarkLogoWhite, WordmarkLogoBlack, Moon, Sun} from "@/assets/svg";
 
 const Header: React.FC = (): JSX.Element | null => {
-  const {address, isConnected, connector, status} = useAccount();
-  const {connect} = useConnect({connector: new InjectedConnector()});
-  const {disconnect} = useDisconnect();
-
   const {resolvedTheme} = useTheme();
   // When mounted on client, now we can show the UI. This is a workaround for the hydration issue.
   const [isMounted, setIsMounted] = useState(false);
@@ -26,24 +18,6 @@ const Header: React.FC = (): JSX.Element | null => {
       <Link href="/">
         <a className="mr-auto">{resolvedTheme === "dark" ? <WordmarkLogoWhite /> : <WordmarkLogoBlack />}</a>
       </Link>
-
-      {isConnected ? (
-        <div className="relative flex items-center">
-          <p
-            className="w-28 hover:w-36 xs:hover:w-60 sm:hover:w-96 transition-all truncate cursor-default"
-            title={address}
-          >
-            Connected to {address}
-          </p>
-          <button onClick={() => disconnect()} title="Log out">
-            <LogoutIcon />
-          </button>
-        </div>
-      ) : (
-        <button onClick={() => connect()} title="Connect to your wallet">
-          <WalletIcon />
-        </button>
-      )}
 
       <ThemeToggle />
     </header>
