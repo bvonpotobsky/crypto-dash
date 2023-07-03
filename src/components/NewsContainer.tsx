@@ -1,14 +1,15 @@
-import Text from "@/components/shared/Text";
+import {useState} from "react";
+import useSWR, {Fetcher, Key} from "swr";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
-import useSWR, {Fetcher, Key} from "swr";
 import MessageHandler from "./shared/MessageHandler";
-import {useState} from "react";
+import Text from "@/components/shared/Text";
+
 const path: Key = "/api/news";
-const fetcher: Fetcher<{data: News[]; total_pages: number}, string> = (url) => fetch(url).then((res) => res.json());
+const fetcher: Fetcher<News[], string> = (url) => fetch(url).then((res) => res.json());
 
 const NewsContainer: React.FC = (): JSX.Element => {
   const {data: news, error} = useSWR(path, fetcher);
@@ -18,7 +19,7 @@ const NewsContainer: React.FC = (): JSX.Element => {
   if (error) return <MessageHandler message="An error has ocurred!" />;
   if (!news) return <MessageHandler message="Loading..." />;
 
-  const newsToRender = news.data.slice((pagination.page - 1) * pagination.limit, pagination.page * pagination.limit);
+  const newsToRender = news.slice((pagination.page - 1) * pagination.limit, pagination.page * pagination.limit);
 
   return (
     <section className="relative md:col-span-3 rounded overflow-hidden">
@@ -62,7 +63,7 @@ const NewsContainer: React.FC = (): JSX.Element => {
         <button
           className="py-1.5 px-2 bg-black/10 dark:bg-slate-800/80 disabled:opacity-50"
           onClick={() => setPagination((prev) => ({...prev, page: prev.page + 1}))}
-          disabled={pagination.page * pagination.limit >= news.data.length}
+          disabled={pagination.page * pagination.limit >= news.length}
         >
           Next
         </button>

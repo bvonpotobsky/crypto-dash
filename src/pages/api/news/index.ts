@@ -1,5 +1,7 @@
 import type {NextApiHandler, NextApiRequest, NextApiResponse} from "next";
 
+import {news} from "@/utils/data";
+
 interface ExtendedNextApiResponse extends NextApiResponse {
   json: (data: News[]) => void;
 }
@@ -14,10 +16,13 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: ExtendedNextApi
 
   if (method === "GET") {
     try {
-      const data = await fetch(
-        `${process.env.CRYPTO_NEWS_API_URL}/category?section=general&items=50&page=1&token=${process.env.CRYPTO_NEWS_API_KEY}`,
-      );
-      const news: News[] = await data.json();
+      // This has been comented because the API is paid.
+      // I scraped the data and saved it in a file for demo purposes.
+
+      // const data = await fetch(
+      //   `${process.env.CRYPTO_NEWS_API_URL}/category?section=general&items=3&page=5&token=${process.env.CRYPTO_NEWS_API_KEY}`,
+      // );
+      // const news: News[] = await data.json();
 
       res.status(200).json(news);
     } catch (err) {
