@@ -1,8 +1,8 @@
 # React Challenge - Exactly Finance
 
-This is a React challenge for Exactly Finance. The goal is to create a simple dasboard with a list of the top 5 crypto currencies by Market Cap. Also display a chart with the price of the selected currency over few different time periods.
+This is a React challenge for Exactly Finance. The goal is to create a simple dasboard with a list of the top 10 crypto currencies by Market Cap. Also display a chart with the price of the selected currency over few different time periods.
 
-[Click here](https://d-time-value-crypto-dashboard.vercel.app/) to see the live demo.
+[Click here](https://e-crypto-dash.vercel.app/) to see the live demo.
 
 # Overview
 
