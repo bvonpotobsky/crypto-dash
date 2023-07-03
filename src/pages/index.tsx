@@ -1,6 +1,6 @@
 import type {NextPage} from "next";
 
-import RootLayout from "Layout";
+import RootLayout from "@/components/shared/Layout";
 
 import CurrenciesTable from "@/components/CurrenciesTable";
 import NewsContainer from "@/components/NewsContainer";

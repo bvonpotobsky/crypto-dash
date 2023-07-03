@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 
-import RootLayout from "Layout";
+import RootLayout from "@/components/shared/Layout";
 
 import CurrencyBanner from "@/components/Currency/CurrencyBanner";
 import CurrencyGraph from "@/components/Currency/CurrencyChart";
